@@ -7,6 +7,7 @@ class ContactService {
   Future<List<Contact>> getContacts() async {
     try {
       await _shouldError("Can't get contact list.");
+
       return contactList;
     } catch (e) {
       return Future.error(e.toString());
@@ -25,7 +26,7 @@ class ContactService {
 
   Future<void> _shouldError(String errorMessage) async {
     Random random = Random();
-    final shouldError = random.nextBool();
+    final shouldError = false;
 
     if (shouldError) {
       return await Future.delayed(

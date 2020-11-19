@@ -31,9 +31,9 @@ class AppRoutes {
     '/contacts/:id',
     Handler(
         handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      final String _contactId = params["id"][0];
+      final String contactId = params["id"][0];
 
-      return ContactDetailPage(_contactId);
+      return ContactDetailPage(contactId);
     }),
   );
 

@@ -8,9 +8,6 @@ import 'package:ds_fluro_contact_list/src/services/contact_service.dart';
 import 'package:flutter/material.dart';
 
 class ContactDetailPage extends StatefulWidget {
-  static Route<ContactDetailPage> route(String contactId) =>
-      MaterialPageRoute(builder: (context) => ContactDetailPage(contactId));
-
   final String _contactId;
   const ContactDetailPage(String contactId) : _contactId = contactId;
 

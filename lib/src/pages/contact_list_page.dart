@@ -1,15 +1,14 @@
+import 'package:animations/animations.dart';
 import 'package:ds_fluro_contact_list/src/constants/router_constants.dart';
 import 'package:ds_fluro_contact_list/src/models/app_router.dart';
 import 'package:ds_fluro_contact_list/src/models/contact.dart';
 
 import 'package:ds_fluro_contact_list/src/services/contact_service.dart';
+import 'package:fluro/fluro.dart';
 
 import 'package:flutter/material.dart';
 
 class ContactListPage extends StatefulWidget {
-  static Route<ContactListPage> route() =>
-      MaterialPageRoute(builder: (context) => ContactListPage());
-
   @override
   _ContactListPageState createState() => _ContactListPageState();
 }
@@ -60,7 +59,18 @@ class _ContactListPageState extends State<ContactListPage> {
                     onTap: () => AppRouter.router.navigateTo(
                       context,
                       AppRoutes.getDetailRoute(
-                          AppRoutes.contactListRoute.route, _contact.id),
+                        AppRoutes.contactListRoute.route,
+                        _contact.id,
+                      ),
+                      transition: TransitionType.custom,
+                      transitionBuilder:
+                          (context, animation, secondaryAnimation, child) =>
+                              SharedAxisTransition(
+                        animation: animation,
+                        secondaryAnimation: secondaryAnimation,
+                        transitionType: SharedAxisTransitionType.scaled,
+                        child: child,
+                      ),
                     ),
                   );
                 },
